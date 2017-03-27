@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#2196f3">
+<title>Framework7 Material</title>
+<link rel="stylesheet" href="../css/framework7.material.min.css">
+<link rel="stylesheet" href="../css/framework7.material.colors.min.css">
+<!--link rel="stylesheet" href="css/my-app.css"-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+	<div class="statusbar-overlay"></div>
+	<div class="panel-overlay"></div>
+	<div class="views">
+		<div class="view view-main">
+			<div class="pages navbar-fixed">
+				<div data-page="index" class="page">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="center">eLicencia</div>
+							<div id="saveinfo" class="right">
+								<a href="#" data-picker=".picker-1" class="open-picker link" id="continue"><i class="material-icons">check</i></a>
+							</div>
+						</div>
+					</div>
+					<div class="page-content">
+						<div class="content-block-title">
+							<b>1) Primer Paso: Vea el video</b>
+						</div>
+						<div class="content-block">
+							<p>Es muy importante ver este video, pues lo introduce a como utilizar esta aplicación y continuar con el proceso del trámite de la elicencia de una manera mas sencilla y rápida.</p>
+						</div>
+						<div class="card ks-facebook-card">
+							<!--div class="card-header">
+								<div class="ks-facebook-avatar"><img src="http://lorempixel.com/68/68/people/1/" width="34" height="34"/></div>
+								<div class="ks-facebook-name">John Doe</div>
+								<div class="ks-facebook-date">Monday at 2:15 PM</div>
+							</div-->
+							<div class="card-content">
+								<div class="card-content-inner">
+									<!--p>What a nice photo i took yesterday!</p-->
+									<div id="player"></div>
+									<!--img src="http://lorempixel.com/1000/700/nature/8/" width="100%"/-->
+									<!--p class="color-gray">Likes: 112 &nbsp;&nbsp; Comments: 43</p-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+	</div>
+
+
+	<!-- Path to Jquery Library JS-->
+    <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <!-- Path to Angular Library JS-->
+    <!--script type="text/javascript" src="js/angular.min.js"></script-->
+    <!-- Path to your app js-->
+    <!--script type="text/javascript" src="js/app.js"></script-->
+    <script>
+    	$(document).ready(function (){
+    		//alert("init "+localStorage.getItem("init"));
+    		if(localStorage.getItem("init") == null)
+    			window.location.href = "../index.html";
+    		if(localStorage.getItem("indicator") != null){
+    			//alert("!= null "+localStorage.getItem("indicator"));
+    			if(localStorage.getItem("indicator") == 1){
+    				window.location.href = "step2_exam.html";	
+    			}
+    			if(localStorage.getItem("indicator") == 2){
+    				window.location.href = "step3_register.html";	
+    			}
+    			
+    		}
+    		$("#saveinfo").hide();
+    	});
+    	
+		// 2. This code loads the IFrame Player API code asynchronously.
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		var player;var indicator = 0;
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player('player', {
+				height: '390',
+				width: '100%',
+				videoId: 'O9h5PLa1S1E',
+				events: {
+					'onReady': onPlayerReady,
+					'onStateChange': onFinish
+				}
+			});
+		}
+		
+		function onPlayerReady(event) {
+			event.target.playVideo();
+		}
+
+		function onFinish(e){
+			if(e.data == 0){
+				//alert("este video ya valio madres");
+				$("#saveinfo").show();
+				indicator = 1;
+			}
+		}
+
+		$("#continue").click(function(){
+			//alert("continuar");
+			localStorage.setItem("indicator", indicator);
+			window.location.href = "step2_exam.html";
+		});
+
+    </script>
+
+</body>
+</html>

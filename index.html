@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#2196f3">
+<title>Framework7 Material</title>
+<link rel="stylesheet" href="css/framework7.material.min.css">
+<link rel="stylesheet" href="css/framework7.material.colors.min.css">
+<!--link rel="stylesheet" href="css/my-app.css"-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+	<div class="statusbar-overlay"></div>
+	<div class="panel-overlay"></div>
+	<div class="views">
+		<div class="view view-main">
+			<div class="pages navbar-fixed">
+				<div data-page="index" class="page">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="center">eLicencia</div>
+							<div id="saveinfo" class="right">
+								<a href="#" data-picker=".picker-1" class="open-picker link" id="continue"><i class="material-icons">check</i></a>
+							</div>
+						</div>
+					</div>
+					<div class="page-content">
+						<div class="content-block-title">
+							<b>Bienvenido!!!</b>
+						</div>
+						<div class="content-block">
+							<p>Ahora es muy fácil y rápido tramitar tu licencia, solo sigue estos 3 pasos, y obtendrás tú eLicencia!!!</p>
+						</div>
+						<div class="card ks-facebook-card">
+							<!--div class="card-header">
+								<div class="ks-facebook-avatar"><img src="http://lorempixel.com/68/68/people/1/" width="34" height="34"/></div>
+								<div class="ks-facebook-name">John Doe</div>
+								<div class="ks-facebook-date">Monday at 2:15 PM</div>
+							</div-->
+							<div class="card-content">
+								<div class="card-content-inner">
+									<!--p>What a nice photo i took yesterday!</p-->
+									<img src="img/licencia.jpg" width="100%"/>
+									<p class="color-gray">Si esta listo para empezar el trámite, presione <i class="material-icons">check</i></p>
+									<b id="users" style="font-size:8.5pt;float:right;"></b>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+	</div>
+
+
+	<!-- Path to Jquery Library JS-->
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to Angular Library JS-->
+    <!--script type="text/javascript" src="js/angular.min.js"></script-->
+    <!-- Path to your app js-->
+    <!--script type="text/javascript" src="js/app.js"></script-->
+    <script>
+    	$(document).ready(function (){
+    		$("#users").empty();
+    		if(localStorage.getItem('init') != null)
+    			window.location.href = "views/step1_takevideo.html";
+    				
+    		if(localStorage.getItem('usuarios_guardados') == null){
+    			$("#users").append("No hay registros");
+    		}else{
+    			var usuarios_guardados = JSON.parse(localStorage.getItem("usuarios_guardados"));
+    			//alert("usuarios "+usuarios_guardados)
+    			$("#users").append("Tiene "+usuarios_guardados.length+" registros<br>");
+    			/*for (var i = 0 ; i < usuarios_guardados.length ; i++) {
+    				$("#users").append("<b>- "+usuarios_guardados[i].LUSUNOM+" </b><br>")
+    			}*/
+    		}
+
+    		$("#continue").click(function(){
+				//alert("continuar");
+				var init = 1;
+				var indicator = 0;
+				localStorage.setItem("init", init);
+				localStorage.setItem("indicator", indicator);
+				window.location.href = "views/step1_takevideo.html";
+			});
+
+    	});
+
+    </script>
+
+</body>
+</html>
