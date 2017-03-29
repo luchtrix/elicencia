@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="theme-color" content="#2196f3">
-<title>Framework7 Material</title>
+<title>Inicio</title>
 <link rel="stylesheet" href="css/framework7.material.min.css">
 <link rel="stylesheet" href="css/framework7.material.colors.min.css">
 <!--link rel="stylesheet" href="css/my-app.css"-->
@@ -26,7 +26,7 @@
 						<div class="navbar-inner">
 							<div class="center">eLicencia</div>
 							<div id="saveinfo" class="right">
-								<a href="#" data-picker=".picker-1" class="open-picker link" id="continue"><i class="material-icons">check</i></a>
+								<a href="#" data-picker=".picker-1" class="open-picker link" id="continue"><i class="material-icons">arrow_forward</i></a>
 							</div>
 						</div>
 					</div>
@@ -47,8 +47,8 @@
 								<div class="card-content-inner">
 									<!--p>What a nice photo i took yesterday!</p-->
 									<img src="img/licencia.jpg" width="100%"/>
-									<p class="color-gray">Si esta listo para empezar el trámite, presione <i class="material-icons">check</i></p>
-									<b id="users" style="font-size:8.5pt;float:right;"></b>
+									<p class="color-gray">Si esta listo para empezar el trámite, presione <i class="material-icons">arrow_forward</i> en la parte superior derecha</p>
+									<!--b id="users" style="font-size:8.5pt;float:right;"></b-->
 								</div>
 							</div>
 						</div>
@@ -80,9 +80,6 @@
     			var usuarios_guardados = JSON.parse(localStorage.getItem("usuarios_guardados"));
     			//alert("usuarios "+usuarios_guardados)
     			$("#users").append("Tiene "+usuarios_guardados.length+" registros<br>");
-    			/*for (var i = 0 ; i < usuarios_guardados.length ; i++) {
-    				$("#users").append("<b>- "+usuarios_guardados[i].LUSUNOM+" </b><br>")
-    			}*/
     		}
 
     		$("#continue").click(function(){
