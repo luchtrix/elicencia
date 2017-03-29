@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#2196f3">
+<title>Proceso Finalizado</title>
+<link rel="stylesheet" href="../css/framework7.material.min.css">
+<link rel="stylesheet" href="../css/framework7.material.colors.min.css">
+<!--link rel="stylesheet" href="css/my-app.css"-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+	<div class="statusbar-overlay"></div>
+	<div class="panel-overlay"></div>
+	<div class="views">
+		<div class="view view-main">
+			<div class="pages navbar-fixed">
+				<div data-page="index" class="page">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="center">eLicencia</div>
+						</div>
+					</div>
+					<div class="page-content">
+						<div class="content-block-title">
+						</div>
+						<div class="content-block">
+							<hr>
+							<h2 align="center">
+								Finalizo el proceso
+							</h2> 
+							<h4 align="center">
+								Vio el tutorial de como es el nuevo proceso, pasó el examén para el tipo de licencia que desea y proporciono datos importantes para el proceso.<br>
+								A continuacion vaya con el encargado del siguiente módulo para continuar con el proceso. <br>
+							</h4>
+							<p align="center"><b><em>G R A C I A S!</em></b></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+
+	<!-- Path to Jquery Library JS-->
+    <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script>
+    	$(document).ready(function (){});
+    		
+    </script>
+
+</body>
+</html>
