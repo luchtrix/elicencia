@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="theme-color" content="#2196f3">
-<title>Framework7 Material</title>
+<title>Paso 2) Examen</title>
 <link rel="stylesheet" href="../css/framework7.material.min.css">
 <link rel="stylesheet" href="../css/framework7.material.colors.min.css">
 <!--link rel="stylesheet" href="css/my-app.css"-->
@@ -26,7 +26,7 @@
 						<div class="navbar-inner">
 							<div class="center">eLicencia</div>
 							<div id="saveinfo" class="right">
-								<a href="#" data-picker=".picker-1" class="open-picker link" id="continue"><i class="material-icons">check</i></a>
+								<a href="#" data-picker=".picker-1" class="open-picker link" id="continue"><i class="material-icons">arrow_forward</i></a>
 							</div>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 						<div class="content-block">
 							<p>Realice y apruebe el siguiente examen, pues con esto comprobamos que usted tiene lo escencial para obtener la eLicencia</p>
 							<hr>
-							<h1 align="center">Aqui va el Examen</h1>
+							<h2 align="center">Aqui va el Examen para la licencia tipo "<em id="tipo"></em>"</h2>
 						</div>
 					</div>
 				</div>
@@ -67,6 +67,9 @@
     		}else{
     			window.location.href = "../index.html";	
     		}
+    		$("#tipo").empty();
+    		$("#tipo").append(localStorage.getItem("tipo"));
+
 	    	//$("#saveinfo").hide();
 	    	var indicator = 2;
 			$("#continue").click(function(){
