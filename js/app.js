@@ -14,51 +14,76 @@ application.controller('elicenciaCtrl', ['$scope', '$http', function($scope, $ht
     	window.location.href = "../index.html";
 	//se esconde la opcion de guardar cuando se carga el archivo
 	$("#saveinfo").hide();
-	$scope.tmp = {};
+	$scope.tmp = {
+		LUSUNOC: "",//Nombre Completo
+		LUSUNOM: "",
+		LUSUAPP: "",
+		LUSUAPM: "",
+		LUSURFC: "",
+		LUSUDIR: "",//Direccion completa
+		LUSUCAL: "",
+		LUSUNUM: "",
+		LUSUCOL: "",
+		LUSUCOP: "",
+		LUSUMUN: "",
+		LUSUEMA: "",
+		LUSUCEL: "",
+		LUSUTIP: "",
+		LUSURES: "",
+		LUSUPAD: "",
+		LUSUDON: "",
+		LUSUALE: "",
+		LUSUSEX: "",
+		LUSUCUR: "",
+		LUSUINE: "",
+		LUSUTIS: "",//Tipo de samgre
+		LUSUNOE: "",
+		LUSUCEE: ""
+	};
+
 	$scope.myoption = function(option){
 		switch(option){
-			case 1: $("#saveinfo").hide(); break;
+			case 1: $("#saveinfo").hide();myApp.closeModal('.picker-modal'); break;
 			case 2: $("#saveinfo").show(); break;
 			default: $("#saveinfo").hide(); break;
 		}
 	}
 
 	$scope.saveallinfo = function(){
-		//alert("nom "+$scope.tmp.LUSUNOM+" ape "+$scope.tmp.LUSUAPP)
+		//alert("tipo "+localStorage.getItem('tipo'));
+		myApp.closeModal('.picker-modal');
+		$scope.tmp.LUSUTIP = localStorage.getItem('tipo');
+		$scope.tmp.LUSUNOC = $scope.tmp.LUSUNOM+" "+$scope.tmp.LUSUAPP+" "+$scope.tmp.LUSUAPM;
+		$scope.tmp.LUSUDIR = "Calle "+$scope.tmp.LUSUCAL+", #"+$scope.tmp.LUSUNUM+", Col. "+$scope.tmp.LUSUCOL+", Municipio "+$scope.tmp.LUSUMUN+", CP: "+$scope.tmp.LUSUCOP;
 		//validar que todos los campos sean llenados
-		var usuarios_guardados = []
-        if (localStorage.getItem("usuarios_guardados") == null) 
-            localStorage.setItem("usuarios_guardados", JSON.stringify(usuarios_guardados));
-        usuarios_guardados = JSON.parse(localStorage.getItem("usuarios_guardados"));
-        //localStorage.removeItem("pacientes_guardados")
-        usuarios_guardados[usuarios_guardados.length] = $scope.tmp;
-            
-        localStorage.setItem("usuarios_guardados", JSON.stringify(usuarios_guardados));
-		localStorage.removeItem("init");
-		localStorage.removeItem("indicator");
-		window.location.href = "../index.html";
-		/*var array = [];
-		//var tmp = [];
-		if(localStorage.getItem("data") == null){
-			array.push($scope.tmp);
-			//tmp.push(array);
-			localStorage.setItem("data", array);
-		}else{
-			array = localStorage.getItem("data");
-			array.push($scope.tmp);
-			localStorage.setItem("data", array);
+		if(!isEmpty($scope.tmp)){
+			alert("Rellene todos los campos...!");
+			return;
 		}
-		localStorage.removeItem("init");
-		localStorage.removeItem("indicator");
-		window.location.href = "../index.html";*/
+
+		$http.post(url_server+"apiu/register", $scope.tmp).then(function(response) {
+            if(response.data.status){
+            	localStorage.removeItem("init");
+				localStorage.removeItem("indicator");
+				$scope.tmp = {};
+            	window.location.href = 'step4_finish.html';
+            }else{
+            	alert("Hubo un error al guardar los datos en la bd local!");
+            }
+        });
+
+		//window.location.href = "../index.html";
 	}
 
-	function verifyUndefined(objeto){
-		for(var i = 0 ; i < objeto.length;i++){
-			if(objeto[i] == undefined)
-				return false;
-		}
-		return true;
+	function isEmpty(obj) {
+		for(var prop in obj) {
+    		var firstProp = obj[prop];
+    		//alert(prop+" --> "+firstProp);
+    		if(firstProp == "" || firstProp == undefined){
+    			return false;
+    		}
+    	}
+    	return true;
 	}
 
 }]);
